@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Hanken_Grotesk, Spectral } from "next/font/google";
 import "./globals.css";
+import { ScrollProgress } from "@/components/ScrollProgress";
 
 const body = Hanken_Grotesk({
   subsets: ["latin"],
@@ -78,7 +79,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR" className={`${body.variable} ${serif.variable}`}>
-      <body>{children}</body>
+      <body>
+        <ScrollProgress />
+        {children}
+      </body>
     </html>
   );
 }

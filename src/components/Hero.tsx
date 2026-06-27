@@ -1,12 +1,23 @@
 "use client";
 
+import { useRef } from "react";
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { MessageCircle, ArrowDown } from "lucide-react";
 import { site, waLink, waMessages } from "@/config/site";
+import { CountUp } from "./ui/CountUp";
 
 export function Hero() {
   const reduce = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Parallax: a imagem desce mais devagar que o conteúdo ao rolar.
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const imgY = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
+
   const rise = (delay: number) =>
     reduce
       ? {}
@@ -16,20 +27,53 @@ export function Hero() {
           transition: { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] as const },
         };
 
+  // Reveal por linha do título (clip mask).
+  const lineParent = {
+    hidden: {},
+    show: { transition: { staggerChildren: 0.12, delayChildren: 0.08 } },
+  };
+  const lineChild = reduce
+    ? { hidden: { opacity: 1 }, show: { opacity: 1 } }
+    : {
+        hidden: { y: "115%" },
+        show: {
+          y: 0,
+          transition: { duration: 0.85, ease: [0.22, 1, 0.36, 1] as const },
+        },
+      };
+
   return (
     <section
+      ref={sectionRef}
       id="top"
       className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden"
     >
-      {/* Foto imersiva da clínica (paciente sorrindo — desarma o medo) */}
-      <Image
-        src="/images/atendimento-1.jpg"
-        alt="Dentista da OdontoVip conversando com uma paciente sorridente durante a avaliação"
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover object-[62%_center]"
-      />
+      {/* Foto imersiva — parallax + Ken Burns (zoom lento contínuo) */}
+      <motion.div
+        aria-hidden
+        className="absolute inset-0"
+        style={reduce ? undefined : { y: imgY }}
+      >
+        <motion.div
+          className="absolute inset-0"
+          animate={reduce ? undefined : { scale: [1.1, 1.18, 1.1] }}
+          transition={
+            reduce
+              ? undefined
+              : { duration: 24, repeat: Infinity, ease: "easeInOut" }
+          }
+        >
+          <Image
+            src="/images/atendimento-1.jpg"
+            alt="Dentista da OdontoVip conversando com uma paciente sorridente durante a avaliação"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-[62%_center]"
+          />
+        </motion.div>
+      </motion.div>
+
       {/* Camadas de leitura: darken uniforme + esquerda + base inferior (texto) */}
       <div aria-hidden className="absolute inset-0 bg-ink-800/45" />
       <div
@@ -47,13 +91,21 @@ export function Hero() {
         </motion.span>
 
         <motion.h1
-          {...rise(0.12)}
+          variants={lineParent}
+          initial="hidden"
+          animate="show"
           className="max-w-3xl text-[clamp(2.1rem,6.2vw,4.4rem)] font-bold text-cream"
         >
-          <span className="block text-cream/85">Sofrendo com o dente do siso?</span>
-          <span className="block">
-            Resolva rápido, com segurança{" "}
-            <span className="accent-serif text-gold">e sem dor.</span>
+          <span className="block overflow-hidden pb-[0.08em]">
+            <motion.span variants={lineChild} className="block text-cream/85">
+              Sofrendo com o dente do siso?
+            </motion.span>
+          </span>
+          <span className="block overflow-hidden pb-[0.08em]">
+            <motion.span variants={lineChild} className="block">
+              Resolva rápido, com segurança{" "}
+              <span className="accent-serif text-gold">e sem dor.</span>
+            </motion.span>
           </span>
         </motion.h1>
 
@@ -91,7 +143,7 @@ export function Hero() {
           {site.disclaimer}
         </motion.p>
 
-        {/* Selos de confiança — faixa editorial (números em serifa, divisores dourados) */}
+        {/* Selos de confiança — números com contagem animada */}
         <motion.dl
           {...rise(0.42)}
           className="mt-10 flex flex-wrap items-end gap-x-8 gap-y-4 border-t border-cream/15 pt-7"
@@ -102,7 +154,7 @@ export function Hero() {
               <div>
                 <dt className="sr-only">{stat.label}</dt>
                 <dd className="accent-serif text-3xl leading-none text-gold md:text-4xl">
-                  {stat.value}
+                  <CountUp value={stat.value} />
                 </dd>
                 <p className="mt-1.5 text-xs uppercase tracking-wide text-cream/60">
                   {stat.label}
