@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy: #0b2b3c;
+  --navy-700: #103b52;
+  --brand: #1c6ea4;
+  --teal: #14b8a6;
+  --teal-600: #0d9488;
+  --wa-green: #25d366;
+  --ink: #0f172a;
+  --slate: #475569;
+  --mist: #f1f5f9;
+  --bg: #ffffff;
+  --ring: rgba(20, 184, 166, 0.35);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body), system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    line-height: 1.7;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-heading), system-ui, sans-serif;
+    color: var(--navy);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+
+  /* Foco visível acessível (AA) */
+  :focus-visible {
+    outline: 3px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+}
+
+@layer components {
+  .text-gradient {
+    background: linear-gradient(90deg, var(--brand), var(--teal));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* divisor pontilhado (referência do site atual) */
+  .dotted-divider {
+    height: 1px;
+    background-image: radial-gradient(
+      var(--slate) 1px,
+      transparent 1px
+    );
+    background-size: 8px 1px;
+    opacity: 0.4;
+  }
+}
+
+/* Respeita prefers-reduced-motion: desliga animações */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 56" width="220" height="56" role="img" aria-label="OdontoVip">
+  <g fill="none" fill-rule="evenodd">
+    <!-- ícone dente -->
+    <rect x="2" y="6" width="44" height="44" rx="12" fill="#0b2b3c"/>
+    <path d="M24 16c-5 0-8.5 2.8-8.5 7.7 0 3.5 1.4 5.6 2.8 9 1.1 2.8 1.7 8.3 3.5 8.3 1.4 0 1-4.9 2.2-4.9s.8 4.9 2.2 4.9c1.8 0 2.4-5.5 3.5-8.3 1.4-3.4 2.8-5.5 2.8-9C32.5 18.8 29 16 24 16z" fill="#14b8a6"/>
+    <!-- wordmark -->
+    <text x="56" y="28" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="20" font-weight="800" letter-spacing="0.5" fill="#0b2b3c">ODONTO</text>
+    <text x="56" y="46" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="20" font-weight="800" letter-spacing="3" fill="#14b8a6">VIP</text>
+  </g>
+</svg>

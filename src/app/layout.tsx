@@ -1,0 +1,83 @@
+import type { Metadata, Viewport } from "next";
+import { Plus_Jakarta_Sans, Inter } from "next/font/google";
+import "./globals.css";
+
+const heading = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["700", "800"],
+  variable: "--font-heading",
+  display: "swap",
+});
+
+const body = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-body",
+  display: "swap",
+});
+
+const SITE_URL = "https://odontovipgo.com.br";
+
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  title: "OdontoVip Goiânia | Extração de Siso Rápida, Segura e Sem Dor",
+  description:
+    "Extração de dente do siso em Goiânia com técnicas modernas, protocolo sem dor e recuperação acelerada. Agende sua avaliação prioritária pelo WhatsApp.",
+  keywords: [
+    "extração de siso Goiânia",
+    "dente do siso",
+    "cirurgia do siso",
+    "dentista Goiânia",
+    "OdontoVip",
+  ],
+  authors: [{ name: "OdontoVip" }],
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    url: SITE_URL,
+    siteName: "OdontoVip",
+    title: "OdontoVip Goiânia | Extração de Siso Rápida, Segura e Sem Dor",
+    description:
+      "Resolva o problema do seu siso com segurança e conforto. Técnicas modernas, sem dor e recuperação acelerada em Goiânia.",
+    images: [
+      {
+        url: "/images/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "OdontoVip — Extração de siso em Goiânia",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "OdontoVip Goiânia | Extração de Siso Rápida, Segura e Sem Dor",
+    description:
+      "Extração de dente do siso em Goiânia com protocolo sem dor e recuperação acelerada.",
+    images: ["/images/og-image.jpg"],
+  },
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+  },
+  alternates: {
+    canonical: SITE_URL,
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0b2b3c",
+  width: "device-width",
+  initialScale: 1,
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="pt-BR" className={`${heading.variable} ${body.variable}`}>
+      <body>{children}</body>
+    </html>
+  );
+}

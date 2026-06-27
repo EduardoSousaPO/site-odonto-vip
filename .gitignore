@@ -6,3 +6,7 @@ dist/
 .vercel
 *.log
 .DS_Store
+.playwright-mcp/
+next-env.d.ts
+/.next/
+/coverage
