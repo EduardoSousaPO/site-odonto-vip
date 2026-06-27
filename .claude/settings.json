@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:odontovipgo.com.br)",
+      "Bash(git -c user.email=eduspires123@gmail.com -c 'user.name=Eduardo Sousa' commit -q -m 'feat: dados reais de contato do site em produção \\(WhatsApp, Instagram, Google, endereço\\) *)"
+    ]
+  }
+}

@@ -7,24 +7,23 @@
 
 export const site = {
   name: "OdontoVip",
-  doctor: "Dr. Paulo Henrique de Sousa Carlos",
+  doctor: "Dr. Paulo Henrique de Sousa Castro",
   phone: "(62) 3642-5320",
   phoneHref: "tel:+556236425320",
   email: "goodontovip@gmail.com",
 
-  // TODO (cliente): confirmar número real do WhatsApp (formato DDI+DDD+numero, só dígitos).
-  // Ex.: 55 + 62 + 9XXXXXXXX => "5562900000000"
-  whatsappNumber: "5562000000000",
+  // WhatsApp oficial (do site em produção: wa.me/5562981850799 → (62) 9 8185-0799).
+  whatsappNumber: "5562981850799",
 
-  // TODO (cliente): confirmar handle/URL real do Instagram.
-  instagram: "https://instagram.com/odontovip",
+  // Instagram oficial (do site em produção).
+  instagram: "https://www.instagram.com/odontovip.go/",
 
-  // TODO (cliente): colar o link do Google Meu Negócio (perfil de avaliações).
-  // Enquanto vazio, o botão "Ver no Google" fica desabilitado.
-  googleBusinessUrl: "",
+  // Google Meu Negócio — link de avaliações (do site em produção).
+  googleBusinessUrl:
+    "https://search.google.com/local/reviews?placeid=ChIJAzxSqzf3XpMRrJbcqVN4PO8",
 
   city: "Goiânia, GO",
-  address: "Goiânia, GO",
+  address: "Av. Maurício Gomes Ribeiro, Setor Novo Horizonte, Goiânia - GO",
 
   stats: [
     { value: "+27 anos", label: "de experiência" },
