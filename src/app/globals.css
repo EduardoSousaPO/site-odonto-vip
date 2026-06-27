@@ -23,9 +23,9 @@
   --teal: 0.47 0.095 233;
   --teal-deep: 0.37 0.085 236;
 
-  /* Bronze / marrom quente (acento premium, no lugar do dourado) */
-  --gold: 0.72 0.09 62;       /* caramelo-bronze: botões + acentos no escuro */
-  --gold-deep: 0.45 0.065 50; /* marrom nogueira: textos/ênfases no creme */
+  /* Marrom cognac (acento premium único, substitui todo o dourado) */
+  --gold: 0.73 0.085 52;      /* cognac caramelo: botões + acentos no escuro */
+  --gold-deep: 0.39 0.072 45; /* marrom espresso: textos/ênfases no creme */
 
   /* Texto */
   --body: 0.36 0.022 230;
