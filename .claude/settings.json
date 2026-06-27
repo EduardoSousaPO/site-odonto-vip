@@ -12,7 +12,9 @@
       "Bash(rm -f fx-hero.jpeg fx-hero2.jpeg fx-top.jpeg)",
       "Bash(rm -rf .playwright-mcp)",
       "Bash(pkill -f \"next-server\")",
-      "Bash(git -c user.email=eduspires123@gmail.com -c 'user.name=Eduardo Sousa' commit -q -m 'feat: efeitos premium no hero + barra de progresso *)"
+      "Bash(git -c user.email=eduspires123@gmail.com -c 'user.name=Eduardo Sousa' commit -q -m 'feat: efeitos premium no hero + barra de progresso *)",
+      "Bash(rm -f fab-green.jpeg)",
+      "Bash(git -c user.email=eduspires123@gmail.com -c 'user.name=Eduardo Sousa' commit -q -m 'style: FAB do WhatsApp no verde oficial \\(#25D366\\) com icone branco *)"
     ]
   }
 }

@@ -27,6 +27,11 @@ const config: Config = {
           DEFAULT: "oklch(var(--gold) / <alpha-value>)",
           deep: "oklch(var(--gold-deep) / <alpha-value>)",
         },
+        // Verde oficial do WhatsApp (exato) — usado só no FAB
+        wa: {
+          DEFAULT: "#25D366",
+          deep: "#128C7E",
+        },
         body: "oklch(var(--body) / <alpha-value>)",
         muted: "oklch(var(--muted) / <alpha-value>)",
       },

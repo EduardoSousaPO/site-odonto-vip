@@ -44,11 +44,11 @@ export function WhatsappFab() {
       transition={{ duration: 0.25 }}
       whileHover={reduce ? undefined : { scale: 1.08 }}
       whileTap={reduce ? undefined : { scale: 0.94 }}
-      className="fixed bottom-5 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-teal-deep text-cream shadow-soft ring-4 ring-gold/30 md:bottom-7 md:right-7"
+      className="fixed bottom-5 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-wa text-white shadow-soft ring-4 ring-wa/25 md:bottom-7 md:right-7"
     >
       <WhatsappIcon className="h-7 w-7" />
       {!reduce && (
-        <span className="absolute inset-0 -z-10 animate-ping rounded-full bg-teal-deep/40" />
+        <span className="absolute inset-0 -z-10 animate-ping rounded-full bg-wa/40" />
       )}
     </motion.a>
   );
