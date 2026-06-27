@@ -19,9 +19,9 @@
   --ink-700: 0.34 0.05 210;
   --ink-800: 0.21 0.04 220;
 
-  /* Teal de ação (marca) */
-  --teal: 0.66 0.115 188;
-  --teal-deep: 0.52 0.095 192;
+  /* Azul petróleo de ação (premium, no lugar do teal/verde) */
+  --teal: 0.5 0.065 225;
+  --teal-deep: 0.4 0.06 227;
 
   /* Dourado champanhe: acento premium / acolhedor */
   --gold: 0.79 0.075 78;
@@ -30,8 +30,6 @@
   /* Texto */
   --body: 0.36 0.022 230;
   --muted: 0.52 0.018 70;
-
-  --wa-green: #25d366;
 }
 
 @layer base {

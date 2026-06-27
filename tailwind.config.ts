@@ -27,7 +27,6 @@ const config: Config = {
           DEFAULT: "oklch(var(--gold) / <alpha-value>)",
           deep: "oklch(var(--gold-deep) / <alpha-value>)",
         },
-        wa: "#25d366",
         body: "oklch(var(--body) / <alpha-value>)",
         muted: "oklch(var(--muted) / <alpha-value>)",
       },
