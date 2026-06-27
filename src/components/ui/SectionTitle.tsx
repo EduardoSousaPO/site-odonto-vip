@@ -2,34 +2,29 @@ import { ReactNode } from "react";
 import { AnimateIn } from "./AnimateIn";
 
 export function SectionTitle({
-  eyebrow,
+  kicker,
   title,
   subtitle,
-  align = "center",
+  align = "left",
 }: {
-  eyebrow?: string;
+  kicker?: string;
   title: ReactNode;
   subtitle?: ReactNode;
   align?: "center" | "left";
 }) {
-  const alignment =
-    align === "center" ? "text-center mx-auto items-center" : "text-left items-start";
+  const isCenter = align === "center";
   return (
     <AnimateIn
-      className={`flex flex-col gap-4 ${alignment} ${
-        align === "center" ? "max-w-3xl" : ""
+      className={`flex flex-col gap-5 ${
+        isCenter ? "mx-auto max-w-3xl items-center text-center" : "max-w-2xl"
       }`}
     >
-      {eyebrow && (
-        <span className="inline-flex w-fit items-center rounded-full bg-teal/10 px-4 py-1.5 text-sm font-semibold text-teal-600">
-          {eyebrow}
-        </span>
-      )}
-      <h2 className="text-[clamp(1.75rem,3.5vw,2.75rem)] font-extrabold">
-        {title}
-      </h2>
+      {kicker && <span className="kicker">{kicker}</span>}
+      <h2 className="text-[clamp(1.9rem,3.8vw,3rem)] font-bold">{title}</h2>
       {subtitle && (
-        <p className="text-[1.0625rem] text-slate md:text-lg">{subtitle}</p>
+        <p className="max-w-[62ch] text-[1.05rem] leading-relaxed text-muted">
+          {subtitle}
+        </p>
       )}
     </AnimateIn>
   );

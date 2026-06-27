@@ -19,7 +19,7 @@ export function Section({
     <section
       id={id}
       className={`scroll-mt-24 py-20 md:py-28 ${
-        tint ? "bg-mist" : "bg-white"
+        tint ? "bg-cream-200" : "bg-cream"
       } ${className}`}
     >
       <Container className={containerClassName}>{children}</Container>

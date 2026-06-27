@@ -6,6 +6,15 @@ Landing page única, premium e **mobile-first**, focada em conversão via **What
 - **Deploy alvo:** Vercel
 - **Página única (`/`)** com 5 blocos: Hero → Eliminação dos medos → Filtro de urgência → Prova social → CTA final.
 
+### Design system
+
+Direção premium e acolhedora, espelhando o clima do site de referência (drrodrigoandrade.com), mantendo a identidade teal-navy da marca:
+
+- **Paleta (OKLCH):** teal-navy profundo + **dourado champanhe** (acento premium) + **creme** quente (neutros). Foge do reflexo clínico "branco + teal frio". Verde oficial do WhatsApp apenas no botão flutuante.
+- **Tipografia:** `Hanken Grotesk` (sans humanista) + `Spectral` itálico para ênfases nos títulos.
+- **Elementos:** hero imersivo full-bleed, navbar flutuante em pílula, ícones line-art, molduras de imagem em arco, blocos editoriais numerados.
+- Tokens em `src/app/globals.css` + `tailwind.config.ts`.
+
 ---
 
 ## 🚀 Rodar localmente
@@ -62,13 +71,15 @@ Todas em [`/public/images/`](public/images). Trocar foto = substituir o arquivo 
 
 | Arquivo | Uso | Origem nesta entrega |
 |---|---|---|
-| `hero-medico.jpg` | Hero (Bloco 1) | ⚠️ **STOCK (placeholder)** — trocar pela foto real do Dr. Paulo |
-| `clinica-sala.jpg` | Ambientação / OG | Stock (Pexels) |
-| `atendimento-1.jpg` | Bloco 3 (acolhimento) | Stock (Pexels) |
+| `atendimento-1.jpg` | **Hero imersivo (Bloco 1)** — paciente sorrindo | Stock (Pexels) |
+| `hero-medico.jpg` | Bloco 3 (Urgência) — médico mostrando radiografia | ⚠️ **STOCK (placeholder)** — trocar pela foto real do Dr. Paulo |
 | `clinica-ambiente.jpg` | Fundo do CTA final | Stock (Pexels) |
+| `clinica-sala.jpg` | Reserva / base do OG | Stock (Pexels) |
 | `og-image.jpg` | Open Graph (compartilhamento) | Derivada de `clinica-sala.jpg` |
-| `logo-odontovip.svg` | Header/Footer | ⚠️ Wordmark **placeholder** — substituir pela logo oficial |
 | `favicon.svg` | Favicon | Placeholder de marca |
+| `logo-odontovip.svg` | (não usado — header/footer usam wordmark inline) | manter para uso futuro |
+
+> O logo no header/footer é um **wordmark inline** ("OdontoVip" creme + dourado). Para usar a logo oficial em vetor, substitua o wordmark nos componentes `Header.tsx`/`Footer.tsx` ou volte a referenciar `logo-odontovip.svg`.
 
 > As imagens de stock são do **Pexels** (licença livre para uso comercial, sem atribuição obrigatória). Substituir pelas fotos próprias quando a cliente enviar.
 

@@ -8,42 +8,50 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        navy: {
-          DEFAULT: "var(--navy)",
-          700: "var(--navy-700)",
+        cream: {
+          DEFAULT: "oklch(var(--cream) / <alpha-value>)",
+          200: "oklch(var(--cream-200) / <alpha-value>)",
+          300: "oklch(var(--cream-300) / <alpha-value>)",
         },
-        brand: "var(--brand)",
+        sand: "oklch(var(--sand) / <alpha-value>)",
+        ink: {
+          DEFAULT: "oklch(var(--ink) / <alpha-value>)",
+          700: "oklch(var(--ink-700) / <alpha-value>)",
+          800: "oklch(var(--ink-800) / <alpha-value>)",
+        },
         teal: {
-          DEFAULT: "var(--teal)",
-          600: "var(--teal-600)",
+          DEFAULT: "oklch(var(--teal) / <alpha-value>)",
+          deep: "oklch(var(--teal-deep) / <alpha-value>)",
         },
-        wa: "var(--wa-green)",
-        ink: "var(--ink)",
-        slate: "var(--slate)",
-        mist: "var(--mist)",
+        gold: {
+          DEFAULT: "oklch(var(--gold) / <alpha-value>)",
+          deep: "oklch(var(--gold-deep) / <alpha-value>)",
+        },
+        wa: "#25d366",
+        body: "oklch(var(--body) / <alpha-value>)",
+        muted: "oklch(var(--muted) / <alpha-value>)",
       },
       fontFamily: {
-        heading: ["var(--font-heading)", "system-ui", "sans-serif"],
         sans: ["var(--font-body)", "system-ui", "sans-serif"],
-      },
-      borderRadius: {
-        "4xl": "2rem",
+        serif: ["var(--font-serif)", "Georgia", "serif"],
       },
       boxShadow: {
-        soft: "0 10px 40px -12px rgba(11, 43, 60, 0.18)",
-        card: "0 4px 24px -8px rgba(11, 43, 60, 0.12)",
+        soft: "0 24px 60px -28px oklch(0.27 0.045 215 / 0.32)",
+        card: "0 2px 18px -10px oklch(0.27 0.045 215 / 0.18)",
+        gold: "0 18px 40px -18px oklch(0.66 0.085 70 / 0.55)",
       },
       maxWidth: {
         "6xl": "72rem",
+        "7xl": "80rem",
       },
       keyframes: {
-        float: {
+        floaty: {
           "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-6px)" },
+          "50%": { transform: "translateY(-8px)" },
         },
       },
       animation: {
-        float: "float 6s ease-in-out infinite",
+        floaty: "floaty 7s ease-in-out infinite",
       },
     },
   },

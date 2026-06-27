@@ -2,18 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * Cores como tripletas L C H "cruas" (sem oklch()) para o Tailwind poder
+ * injetar opacidade via oklch(var(--x) / <alpha-value>). Em CSS custom abaixo,
+ * sempre embrulhar com oklch(var(--x)).
+ */
 :root {
-  --navy: #0b2b3c;
-  --navy-700: #103b52;
-  --brand: #1c6ea4;
-  --teal: #14b8a6;
-  --teal-600: #0d9488;
+  /* Neutros quentes (creme) */
+  --cream: 0.985 0.006 84;
+  --cream-200: 0.965 0.01 82;
+  --cream-300: 0.935 0.013 80;
+  --sand: 0.88 0.018 78;
+
+  /* Tinta profunda: teal-navy quente (identidade aquecida) */
+  --ink: 0.27 0.045 215;
+  --ink-700: 0.34 0.05 210;
+  --ink-800: 0.21 0.04 220;
+
+  /* Teal de ação (marca) */
+  --teal: 0.66 0.115 188;
+  --teal-deep: 0.52 0.095 192;
+
+  /* Dourado champanhe: acento premium / acolhedor */
+  --gold: 0.79 0.075 78;
+  --gold-deep: 0.66 0.085 70;
+
+  /* Texto */
+  --body: 0.36 0.022 230;
+  --muted: 0.52 0.018 70;
+
   --wa-green: #25d366;
-  --ink: #0f172a;
-  --slate: #475569;
-  --mist: #f1f5f9;
-  --bg: #ffffff;
-  --ring: rgba(20, 184, 166, 0.35);
 }
 
 @layer base {
@@ -22,53 +40,87 @@
   }
 
   body {
-    background-color: var(--bg);
-    color: var(--ink);
+    background-color: oklch(var(--cream));
+    color: oklch(var(--body));
     font-family: var(--font-body), system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    line-height: 1.7;
+    line-height: 1.65;
   }
 
   h1,
   h2,
   h3,
   h4 {
-    font-family: var(--font-heading), system-ui, sans-serif;
-    color: var(--navy);
+    font-family: var(--font-body), system-ui, sans-serif;
+    color: oklch(var(--ink));
     letter-spacing: -0.02em;
-    line-height: 1.15;
+    line-height: 1.08;
+    font-weight: 700;
   }
 
-  /* Foco visível acessível (AA) */
+  /* Ênfase em serifa itálica (espelha "de Alta Performance" da referência) */
+  .accent-serif {
+    font-family: var(--font-serif), Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
   :focus-visible {
-    outline: 3px solid var(--ring);
-    outline-offset: 2px;
-    border-radius: 6px;
+    outline: 2.5px solid oklch(var(--gold));
+    outline-offset: 3px;
+    border-radius: 8px;
+  }
+
+  ::selection {
+    background: oklch(var(--gold));
+    color: oklch(var(--ink));
   }
 }
 
 @layer components {
-  .text-gradient {
-    background: linear-gradient(90deg, var(--brand), var(--teal));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+  /* Kicker discreto: rótulo curto com traço dourado (usar com parcimônia) */
+  .kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: oklch(var(--gold-deep));
+  }
+  .kicker::before {
+    content: "";
+    width: 1.75rem;
+    height: 1px;
+    background: oklch(var(--gold));
+    display: inline-block;
   }
 
-  /* divisor pontilhado (referência do site atual) */
-  .dotted-divider {
+  /* Divisor fino dourado */
+  .rule-gold {
     height: 1px;
-    background-image: radial-gradient(
-      var(--slate) 1px,
-      transparent 1px
+    background: linear-gradient(
+      90deg,
+      transparent,
+      oklch(var(--gold)) 30%,
+      oklch(var(--gold)) 70%,
+      transparent
     );
-    background-size: 8px 1px;
-    opacity: 0.4;
+    opacity: 0.55;
+  }
+
+  /* Molduras orgânicas de imagem (espelham a referência) */
+  .arch {
+    border-radius: 11rem 11rem 1.75rem 1.75rem;
+  }
+  .arch-soft {
+    border-radius: 6rem 1.75rem 6rem 1.75rem;
   }
 }
 
-/* Respeita prefers-reduced-motion: desliga animações */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

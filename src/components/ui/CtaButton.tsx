@@ -3,31 +3,30 @@
 import { ReactNode } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 
-type Variant = "primary" | "whatsapp" | "outline" | "ghost";
+type Variant = "gold" | "teal" | "outline" | "outlineLight";
 type Size = "md" | "lg";
 
 const base =
-  "inline-flex items-center justify-center gap-2.5 rounded-2xl font-semibold transition-colors duration-200 focus-visible:outline-none";
+  "group inline-flex items-center justify-center gap-2.5 rounded-full font-semibold tracking-tight transition-[background,color,border-color] duration-200 focus-visible:outline-none";
 
 const variants: Record<Variant, string> = {
-  primary:
-    "bg-brand text-white shadow-soft hover:bg-navy-700",
-  whatsapp:
-    "bg-teal text-white shadow-soft hover:bg-teal-600",
+  gold: "bg-gold text-ink shadow-gold hover:bg-gold-deep hover:text-cream",
+  teal: "bg-teal-deep text-cream shadow-soft hover:bg-ink",
   outline:
-    "border-2 border-navy/15 bg-white text-navy hover:border-teal hover:text-teal-600",
-  ghost: "text-navy hover:text-teal-600",
+    "border border-ink/20 text-ink hover:border-gold hover:text-gold-deep",
+  outlineLight:
+    "border border-cream/30 text-cream hover:border-gold hover:bg-cream/5",
 };
 
 const sizes: Record<Size, string> = {
-  md: "px-5 py-3 text-[0.95rem]",
-  lg: "px-7 py-4 text-base md:text-lg",
+  md: "px-5 py-2.5 text-[0.95rem]",
+  lg: "px-7 py-3.5 text-base",
 };
 
 export function CtaButton({
   href,
   children,
-  variant = "whatsapp",
+  variant = "gold",
   size = "lg",
   className = "",
   external = true,
@@ -41,7 +40,6 @@ export function CtaButton({
   className?: string;
   external?: boolean;
   ariaLabel?: string;
-  /** rótulo p/ instrumentar conversão depois (GA/eventos) */
   dataEvent?: string;
 }) {
   const reduce = useReducedMotion();
@@ -54,8 +52,9 @@ export function CtaButton({
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
       className={`${base} ${variants[variant]} ${sizes[size]} ${className}`}
-      whileHover={reduce ? undefined : { scale: 1.03 }}
-      whileTap={reduce ? undefined : { scale: 0.98 }}
+      whileHover={reduce ? undefined : { y: -2 }}
+      whileTap={reduce ? undefined : { y: 0, scale: 0.98 }}
+      transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}
     </motion.a>

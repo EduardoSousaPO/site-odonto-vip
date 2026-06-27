@@ -2,131 +2,116 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import { MessageCircle, ShieldCheck } from "lucide-react";
-import { Container } from "./ui/Container";
-import { CtaButton } from "./ui/CtaButton";
+import { MessageCircle, ArrowDown } from "lucide-react";
 import { site, waLink, waMessages } from "@/config/site";
 
 export function Hero() {
   const reduce = useReducedMotion();
+  const rise = (delay: number) =>
+    reduce
+      ? {}
+      : {
+          initial: { opacity: 0, y: 22 },
+          animate: { opacity: 1, y: 0 },
+          transition: { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] as const },
+        };
 
   return (
-    <section id="top" className="relative overflow-hidden bg-white">
-      {/* blobs decorativos suaves */}
+    <section
+      id="top"
+      className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden"
+    >
+      {/* Foto imersiva da clínica (paciente sorrindo — desarma o medo) */}
+      <Image
+        src="/images/atendimento-1.jpg"
+        alt="Dentista da OdontoVip conversando com uma paciente sorridente durante a avaliação"
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-[62%_center]"
+      />
+      {/* Camadas de leitura: darken uniforme + esquerda + base inferior (texto) */}
+      <div aria-hidden className="absolute inset-0 bg-ink-800/45" />
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full bg-teal/10 blur-3xl"
+        className="absolute inset-0 bg-gradient-to-r from-ink-800 via-ink-800/85 to-ink-800/25"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -left-24 top-40 h-80 w-80 rounded-full bg-brand/10 blur-3xl"
+        className="absolute inset-0 bg-gradient-to-t from-ink-800 via-ink-800/45 to-transparent"
       />
 
-      <Container className="relative grid items-center gap-10 py-10 md:grid-cols-2 md:gap-12 md:py-20 lg:py-24">
-        {/* Coluna de texto + CTA (primeiro no DOM => above the fold no mobile) */}
-        <div className="flex flex-col gap-5 md:gap-6">
-          <motion.span
-            initial={reduce ? false : { opacity: 0, y: 12 }}
-            animate={reduce ? undefined : { opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex w-fit items-center gap-2 rounded-full bg-teal/10 px-4 py-1.5 text-sm font-semibold text-teal-600"
-          >
-            <ShieldCheck className="h-4 w-4" aria-hidden />
-            Extração de siso em {site.city}
-          </motion.span>
+      <div className="relative mx-auto w-full max-w-6xl px-5 pb-12 pt-28 sm:px-6 lg:px-8 lg:pb-20">
+        <motion.span {...rise(0.05)} className="kicker mb-6 text-gold">
+          OdontoVip · Extração de siso em {site.city}
+        </motion.span>
 
-          <motion.h1
-            initial={reduce ? false : { opacity: 0, y: 16 }}
-            animate={reduce ? undefined : { opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.05 }}
-            className="text-[clamp(2.05rem,6vw,4rem)] font-extrabold leading-[1.08]"
-          >
-            Sofrendo com o dente do siso?{" "}
-            <span className="text-gradient">
-              Resolva rápido, com segurança e sem dor.
-            </span>
-          </motion.h1>
-
-          <motion.p
-            initial={reduce ? false : { opacity: 0, y: 16 }}
-            animate={reduce ? undefined : { opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.12 }}
-            className="max-w-xl text-[1.0625rem] text-slate md:text-lg"
-          >
-            Na OdontoVip Goiânia, realizamos a extração do seu siso com técnicas
-            modernas, foco no seu conforto e uma recuperação acelerada para você
-            voltar logo à sua rotina.
-          </motion.p>
-
-          <motion.div
-            initial={reduce ? false : { opacity: 0, y: 16 }}
-            animate={reduce ? undefined : { opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.18 }}
-            className="flex flex-col gap-3"
-          >
-            <CtaButton
-              href={waLink(waMessages.hero)}
-              variant="whatsapp"
-              size="lg"
-              dataEvent="cta_hero"
-              className="w-full sm:w-fit"
-              ariaLabel="Agendar avaliação prioritária via WhatsApp"
-            >
-              <MessageCircle className="h-5 w-5" aria-hidden />
-              Agendar Avaliação Prioritária via WhatsApp
-            </CtaButton>
-            <p className="text-sm text-slate">
-              {site.disclaimer}
-            </p>
-          </motion.div>
-
-          {/* Selos de confiança */}
-          <motion.ul
-            initial={reduce ? false : { opacity: 0, y: 16 }}
-            animate={reduce ? undefined : { opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.24 }}
-            className="mt-1 grid grid-cols-3 gap-3 border-t border-navy/5 pt-5"
-          >
-            {site.stats.map((stat) => (
-              <li key={stat.label} className="flex flex-col">
-                <span className="text-xl font-extrabold text-navy md:text-2xl">
-                  {stat.value}
-                </span>
-                <span className="text-xs text-slate md:text-sm">{stat.label}</span>
-              </li>
-            ))}
-          </motion.ul>
-        </div>
-
-        {/* Coluna de imagem (depois no DOM no mobile) */}
-        <motion.div
-          initial={reduce ? false : { opacity: 0, scale: 0.97 }}
-          animate={reduce ? undefined : { opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, delay: 0.1 }}
-          className="relative mx-auto w-full max-w-md md:max-w-none"
+        <motion.h1
+          {...rise(0.12)}
+          className="max-w-3xl text-[clamp(2.1rem,6.2vw,4.4rem)] font-bold text-cream"
         >
-          <div className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-soft ring-1 ring-navy/5">
-            <Image
-              src="/images/hero-medico.jpg"
-              alt="Profissional da OdontoVip conversando com paciente durante a avaliação"
-              fill
-              priority
-              sizes="(max-width: 768px) 90vw, 45vw"
-              className="object-cover"
-            />
-          </div>
+          <span className="block text-cream/85">Sofrendo com o dente do siso?</span>
+          <span className="block">
+            Resolva rápido, com segurança{" "}
+            <span className="accent-serif text-gold">e sem dor.</span>
+          </span>
+        </motion.h1>
 
-          {/* badge flutuante */}
-          <motion.div
-            animate={reduce ? undefined : { y: [0, -8, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -bottom-4 -left-4 hidden rounded-2xl bg-white/95 px-5 py-3 shadow-soft ring-1 ring-navy/5 backdrop-blur md:block"
+        <motion.p
+          {...rise(0.2)}
+          className="mt-6 max-w-md text-[1.05rem] leading-relaxed text-cream/90"
+        >
+          Na OdontoVip Goiânia, realizamos a extração do seu siso com técnicas
+          modernas, foco no seu conforto e uma recuperação acelerada para você
+          voltar logo à sua rotina.
+        </motion.p>
+
+        <motion.div {...rise(0.28)} className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <a
+            href={waLink(waMessages.hero)}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-event="cta_hero"
+            aria-label="Agendar avaliação prioritária via WhatsApp"
+            className="group inline-flex items-center justify-center gap-2.5 rounded-full bg-gold px-7 py-4 text-base font-semibold text-ink shadow-gold transition-[background,transform] duration-200 hover:-translate-y-0.5 hover:bg-cream"
           >
-            <p className="text-sm font-semibold text-navy">Atendimento acolhedor</p>
-            <p className="text-xs text-slate">conforto do diagnóstico à recuperação</p>
-          </motion.div>
+            <MessageCircle className="h-5 w-5" aria-hidden />
+            Agendar Avaliação Prioritária
+          </a>
+          <a
+            href="#urgencia"
+            className="group inline-flex items-center justify-center gap-2 rounded-full border border-cream/30 px-6 py-4 text-base font-medium text-cream transition-colors hover:border-gold hover:text-gold"
+          >
+            Será que é o meu caso?
+            <ArrowDown className="h-4 w-4 transition-transform duration-200 group-hover:translate-y-0.5" aria-hidden />
+          </a>
         </motion.div>
-      </Container>
+
+        <motion.p {...rise(0.34)} className="mt-4 text-sm text-cream/55">
+          {site.disclaimer}
+        </motion.p>
+
+        {/* Selos de confiança — faixa editorial (números em serifa, divisores dourados) */}
+        <motion.dl
+          {...rise(0.42)}
+          className="mt-10 flex flex-wrap items-end gap-x-8 gap-y-4 border-t border-cream/15 pt-7"
+        >
+          {site.stats.map((stat, i) => (
+            <div key={stat.label} className="flex items-end gap-8">
+              {i > 0 && <span aria-hidden className="hidden h-10 w-px bg-cream/15 sm:block" />}
+              <div>
+                <dt className="sr-only">{stat.label}</dt>
+                <dd className="accent-serif text-3xl leading-none text-gold md:text-4xl">
+                  {stat.value}
+                </dd>
+                <p className="mt-1.5 text-xs uppercase tracking-wide text-cream/60">
+                  {stat.label}
+                </p>
+              </div>
+            </div>
+          ))}
+        </motion.dl>
+      </div>
     </section>
   );
 }
