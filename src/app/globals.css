@@ -23,8 +23,9 @@
   --teal: 0.47 0.095 233;
   --teal-deep: 0.37 0.085 236;
 
-  /* Marrom cognac (acento premium único, substitui todo o dourado) */
-  --gold: 0.73 0.085 52;      /* cognac caramelo: botões + acentos no escuro */
+  /* Marrom cognac (acento premium único — mesma família do início ao fim) */
+  /* Hue 46 (igual ao espresso) p/ ler como MARROM, não dourado, também no hero */
+  --gold: 0.67 0.076 46;      /* cognac claro: acentos/botões sobre o escuro */
   --gold-deep: 0.39 0.072 45; /* marrom espresso: textos/ênfases no creme */
 
   /* Texto */

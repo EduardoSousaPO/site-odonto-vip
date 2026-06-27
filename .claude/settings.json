@@ -2,7 +2,13 @@
   "permissions": {
     "allow": [
       "WebFetch(domain:odontovipgo.com.br)",
-      "Bash(git -c user.email=eduspires123@gmail.com -c 'user.name=Eduardo Sousa' commit -q -m 'feat: dados reais de contato do site em produção \\(WhatsApp, Instagram, Google, endereço\\) *)"
+      "Bash(git -c user.email=eduspires123@gmail.com -c 'user.name=Eduardo Sousa' commit -q -m 'feat: dados reais de contato do site em produção \\(WhatsApp, Instagram, Google, endereço\\) *)",
+      "Bash(npx --yes skills find \"web animation motion effects\")",
+      "Bash(npx --yes skills find \"nextjs web design\")",
+      "Bash(npx --yes skills find \"framer motion animation\")",
+      "Bash(find . -name \"hero-brown.jpeg\")",
+      "Bash(ls .playwright-mcp)",
+      "Bash(git -c user.email=eduspires123@gmail.com -c 'user.name=Eduardo Sousa' commit -q -m 'style: unifica o marrom cognac do início ao fim \\(remove aspecto dourado no hero\\) *)"
     ]
   }
 }
