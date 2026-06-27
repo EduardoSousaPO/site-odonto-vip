@@ -14,18 +14,18 @@
   --cream-300: 0.935 0.013 80;
   --sand: 0.88 0.018 78;
 
-  /* Tinta profunda: teal-navy quente (identidade aquecida) */
-  --ink: 0.27 0.045 215;
-  --ink-700: 0.34 0.05 210;
-  --ink-800: 0.21 0.04 220;
+  /* Tinta profunda: safira-navy rico (base escura premium) */
+  --ink: 0.27 0.052 226;
+  --ink-700: 0.34 0.058 224;
+  --ink-800: 0.205 0.052 230;
 
-  /* Azul petróleo de ação (premium, no lugar do teal/verde) */
-  --teal: 0.5 0.065 225;
-  --teal-deep: 0.4 0.06 227;
+  /* Azul safira profundo (ação) — mais rico e elegante */
+  --teal: 0.47 0.095 233;
+  --teal-deep: 0.37 0.085 236;
 
-  /* Dourado champanhe: acento premium / acolhedor */
-  --gold: 0.79 0.075 78;
-  --gold-deep: 0.66 0.085 70;
+  /* Bronze / marrom quente (acento premium, no lugar do dourado) */
+  --gold: 0.72 0.09 62;       /* caramelo-bronze: botões + acentos no escuro */
+  --gold-deep: 0.45 0.065 50; /* marrom nogueira: textos/ênfases no creme */
 
   /* Texto */
   --body: 0.36 0.022 230;
